@@ -2,6 +2,8 @@
 from services.database import Database
 #random
 import random
+#import timestamp
+import time
 
 
 #create controller for client
@@ -17,10 +19,12 @@ class Client:
         db = Database()
         #insert new client in database
         #random numeric integer
-        client_id = str(random.randint(1, 100))
+        #current timestamp in milliseconds as client id in string
+        client_id = str(int(time.time()*1000))
+
         db.insert('client', "'"+client_id+"', '"+client_name+"', '"+client_address+"', '"+client_phone+"', '"+client_email+"'")
-        #return the id of the new client
-        return db.search('client', client_name)[0][0]
+        #return the inserted client id
+        return client_id
 
     #get all clients from database, return a list of clients
     def get_clients(self):

@@ -21,7 +21,10 @@ def create_random_client():
     #create a new client
     client = clients.Client()
     #create a new random client
-    client.create_client(name, address, phone, email)
+    id = client.create_client(name, address, phone, email)
+    #return id
+    return id
+
 
 #get all clients from database
 def get_clients():
@@ -32,6 +35,6 @@ def get_clients():
 
 
 #run the create_random_client function
-create_random_client()
+print(create_random_client())
 #run the get_clients function
 print(get_clients())
