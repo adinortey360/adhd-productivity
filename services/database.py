@@ -1,3 +1,7 @@
+#import sqlite3
+import sqlite3
+
+
 #Create a class for sqlite database connection
 class Database:
     def __init__(self):

@@ -2,7 +2,7 @@
 from services.database import Database
 
 #create a class for task controller
-class TaskController:
+class Task:
     #initialize the class
     def __init__(self):
         #return none

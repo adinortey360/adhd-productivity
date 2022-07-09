@@ -1,5 +1,8 @@
+#import database service
+from services.database import Database
+
 #create controller for client
-class ClientController:
+class Client:
     #initialize the class
     def __init__(self):
         #return none

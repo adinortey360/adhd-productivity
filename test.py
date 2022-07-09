@@ -1,15 +1,14 @@
-import dearpygui.dearpygui as dpg
+#import task
+import services.tasks as tasks
+#import client
+import services.clients as clients
 
-dpg.create_context()
-dpg.create_viewport(title='Custom Title', width=600, height=300)
+#create a new random client for testing
+def create_random_client():
+    #create a new client
+    client = clients.Client()
+    #create a new random client
+    client.create_client('random_client', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '02020202','test@test.com');
 
-with dpg.window(label="Example Window"):
-    dpg.add_text("Hello, world")
-    dpg.add_button(label="Save")
-    dpg.add_input_text(label="string", default_value="Quick brown fox")
-    dpg.add_slider_float(label="float", default_value=0.273, max_value=1)
-
-dpg.setup_dearpygui()
-dpg.show_viewport()
-dpg.start_dearpygui()
-dpg.destroy_context()
+#run the create_random_client function
+create_random_client()
