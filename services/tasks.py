@@ -3,10 +3,10 @@ from services.database import Database
 
 #create a class for task controller
 class Task:
-    #initialize the class
+    #initialize the class and create sqlite table for task if it doesn't exist
     def __init__(self):
-        #return none
         return None
+        
     
     #create new task in database with parameters task_name, client_id, status, due_date and task_description, return the id of the new task    
     def create_task(self, task_name, client_id, status, due_date, task_description):

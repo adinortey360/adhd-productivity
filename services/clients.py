@@ -1,5 +1,8 @@
 #import database service
 from services.database import Database
+#random
+import random
+
 
 #create controller for client
 class Client:
@@ -13,7 +16,9 @@ class Client:
         #create a database object
         db = Database()
         #insert new client in database
-        db.insert('client', "'"+client_name+"', '"+client_address+"', '"+client_phone+"', '"+client_email+"'")
+        #random numeric integer
+        client_id = str(random.randint(1, 100))
+        db.insert('client', "'"+client_id+"', '"+client_name+"', '"+client_address+"', '"+client_phone+"', '"+client_email+"'")
         #return the id of the new client
         return db.search('client', client_name)[0][0]
 

@@ -7,8 +7,8 @@ class Database:
     def __init__(self):
         self.conn = sqlite3.connect('database.db')
         self.cur = self.conn.cursor()
-        self.cur.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, username TEXT, password TEXT)")
-        self.cur.execute("CREATE TABLE IF NOT EXISTS item (id INTEGER PRIMARY KEY, name TEXT, price TEXT)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS client (id INTEGER PRIMARY KEY, name TEXT, address TEXT, phone TEXT, email TEXT)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS task (id INTEGER PRIMARY KEY, name TEXT, description TEXT, client_id INTEGER, status TEXT)")
         self.conn.commit()
         self.conn.close()
 
@@ -46,3 +46,4 @@ class Database:
         self.conn = sqlite3.connect('database.db')
         self.cur = self.conn.cursor()
         self.cur.execute("UPDATE "+table+" SET name = '"+name+"', price = '"+price+"' WHERE id = "+id)
+
