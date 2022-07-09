@@ -8,27 +8,51 @@ class TaskController:
         #return none
         return None
     
-    #create new task in database with parameters task_name, client, due_date and task_description, return the id of the new task    
-    def create_task(self, task_name, client, due_date, task_description):
-        #create a new database
+    #create new task in database with parameters task_name, client_id, status, due_date and task_description, return the id of the new task    
+    def create_task(self, task_name, client_id, status, due_date, task_description):
+        #create a database object
         db = Database()
-        #insert new task into database
-        db.insert('task', "'"+task_name+"', '"+client+"', '"+due_date+"', '"+task_description+"'")
-        #get the id of the new task
+        #insert new task in database
+        db.insert('task', "'"+task_name+"', '"+client_id+"', '"+status+"', '"+due_date+"', '"+task_description+"'")
+        #return the id of the new task
         return db.search('task', task_name)[0][0]
 
     #get all tasks from database, return a list of tasks
-    def get_all_tasks(self):
-        #create a new database
+    def get_tasks(self):
+        #create a database object
         db = Database()
-        #get all tasks from database
+        #return all tasks from database
         return db.view('task')
 
-    #get task by id from database, return a list of tasks
-    def get_task_by_id(self, id):
-        #create a new database
+    #get task by id from database, return a list of task
+    def get_task_by_id(self, task_id):
+        #create a database object
         db = Database()
-        #get task by id from database
-        return db.search('task', id)
+        #return task by id from database
+        return db.search('task', task_id)
 
-    
+    #get task by name from database, return a list of task
+    def get_task_by_name(self, task_name):
+        #create a database object
+        db = Database()
+        #return task by name from database
+        return db.search('task', task_name)
+
+    #delete task by id from database, return a list of task
+    def delete_task_by_id(self, task_id):
+        #create a database object
+        db = Database()
+        #delete task by id from database
+        db.delete('task', task_id)
+        #return task by id from database
+        return db.search('task', task_id)
+
+    #update task by id from database, return task
+    def update_task_by_id(self, task_id, task_name, client_id, status, due_date, task_description):
+        #create a database object
+        db = Database()
+        #update task by id from database
+        db.update('task', task_id, task_name, client_id, status, due_date, task_description)
+        #return task by id from database
+        return db.search('task', task_id)
+        
